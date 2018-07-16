@@ -1,0 +1,34 @@
+<main [attr.ns-content-type]="'register'">
+
+  <section id="register" class="formular">
+    <header>
+      <h1>Registration</h1>
+    </header>
+    <form class="form login-form" (submit)="onRequestSubmit()">
+      <ul class="reset">
+        <li [ngClass]="{'error' : errors.name}">
+          <input type="text" name="name" id="name" [(ngModel)]="name">
+          <label for="name" [attr.ns-tooltip]="'Your Name'" [attr.ns-tooltip-position]="'top'">Name</label>
+          <div class="error-container" *ngIf="errors.name">
+            <small>{{errors.name}}</small>
+          </div>
+        </li>
+        <li [ngClass]="{'error' : errors.email}">
+          <input type="email" name="email" id="email" [(ngModel)]="email">
+          <label for="email" [attr.ns-tooltip]="'Your Email'" [attr.ns-tooltip-position]="'top'">Email</label>
+          <div class="error-container" *ngIf="errors.email">
+            <small>{{errors.email}}</small>
+          </div>
+        </li>
+        <li>
+          <input type="submit" name="submit" id="submit" value="Request Registration" class="button medium">
+        </li>
+      </ul>
+      <footer>
+        <p>Already have an account? <a [routerLink]="['/login']" class="link" [attr.ns-tooltip]="'Log In'" [attr.ns-tooltip-position]="'bottom'">Log In</a></p>
+      </footer>
+    </form>
+
+  </section>
+
+</main>

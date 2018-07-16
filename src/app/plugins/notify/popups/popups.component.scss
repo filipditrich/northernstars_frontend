@@ -1,0 +1,113 @@
+@import "../../../../assets/partials/variables";
+
+#popups {
+
+  position: relative;
+  width: 0;
+  height: 0;
+  background-color: transparent;
+  transition: all 0s linear 300ms, background-color 250ms ease-out 0s;
+
+
+  &.non-empty{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($black, .75);
+    transition-delay: 0ms;
+    transition: background-color 250ms ease-in 0s;
+  }
+
+  .popup {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: left top;
+    background: $white;
+    padding: 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-width: 220px;
+    box-shadow: 0 10px 25px rgba($black, 0.15);
+
+    & ~ * {
+      visibility: hidden;
+      opacity: 0;
+      transition: all 250ms ease-in -200ms;
+    }
+
+    &.popup-danger {
+      background: mix($error_dark, $white, 5%);
+      .heading {
+        color: $error_dark;
+      }
+      .text {
+        color: rgba($error_dark, 0.5);
+      }
+    }
+
+    &.popup-warn {
+      background: $alert_warn_bg;
+      .heading { color: $alert_warn_col; }
+      .text { color: rgba($alert_warn_col, 0.5) }
+      button {
+        background: $alert_warn_col;
+        box-shadow: 0 2px 25px rgba($alert_warn_col, 0.1);
+        &:hover { box-shadow: 0 2px 25px rgba($alert_warn_col, 0.5); }
+      }
+    }
+
+    &.popup-fatal {
+      background: $alert_error_bg;
+      .heading { color: $error_dark; }
+      .text { color: rgba($error_light, 0.5) }
+      button {
+        background: $alert_error_col;
+        box-shadow: 0 2px 25px rgba($alert_error_col, 0.1);
+        &:hover { box-shadow: 0 2px 25px rgba($alert_error_col, 0.5); }
+      }
+    }
+
+
+    i {
+      font-size: 5rem;
+      color: $text_4;
+    }
+
+    p {
+
+      margin: 0;
+      line-height: 1.5;
+
+      &.heading {
+        font-size: $fs_big;
+        color: $main;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin: 10px 0;
+      }
+
+      &.text {
+        font-size: $fs_smaller;
+        color: $text_2;
+      }
+
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+
+      button {
+        margin: 5px;
+        flex: 1 1 auto
+      }
+
+    }
+
+  }
+
+}

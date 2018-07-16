@@ -1,0 +1,38 @@
+<main [attr.ns-content-type]="'login'">
+
+  <section id="login" class="formular">
+    <div class="loading" *ngIf="loading">
+      <div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+    <header>
+      <h1>Login</h1>
+    </header>
+    <form class="form login-form" (submit)="onLoginSubmit()">
+      <ul class="reset">
+        <li [ngClass]="{'error' : errors.username}">
+          <input type="text" name="username" id="username" [(ngModel)]="username">
+          <label for="username" [attr.ns-tooltip]="'Your Username'" [attr.ns-tooltip-position]="'top'">Username</label>
+          <div class="error-container" *ngIf="errors.username">
+            <small>{{errors.username}}</small>
+          </div>
+        </li>
+        <li [ngClass]="{'error' : errors.password}">
+          <input type="password" name="password" id="password" [(ngModel)]="password">
+          <label for="password" [attr.ns-tooltip]="'Your Password'" [attr.ns-tooltip-position]="'top'">Password</label>
+          <div class="error-container" *ngIf="errors.password">
+            <small>{{errors.password}}</small>
+          </div>
+        </li>
+        <li>
+          <input type="submit" name="submit" id="submit" value="Login" class="button medium">
+        </li>
+      </ul>
+      <footer>
+        <p>Don't have an account? <a [routerLink]="['/register']" class="link" [attr.ns-tooltip]="'Create New Account Here'" [attr.ns-tooltip-position]="'bottom'">Sign Up</a></p>
+        <p><a [routerLink]="['/forgot-password']" class="link alt" [attr.ns-tooltip]="'Forgot Password or Username?'" [attr.ns-tooltip-position]="'top'">Forgot Credentials?</a></p>
+      </footer>
+    </form>
+
+  </section>
+
+</main>

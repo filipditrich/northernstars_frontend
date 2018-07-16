@@ -1,0 +1,154 @@
+@import "../../../../assets/partials/variables";
+
+#push-notifications {
+
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  padding: 16px;
+
+  .notification-toggle {
+    align-self: flex-end;
+    width: 42px;
+    height: 42px;
+    background: $white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba($black, 0.15);
+    cursor: pointer;
+    z-index: 99;
+    position: relative;
+
+    .icon {
+      color: $main;
+      transition: all 500ms ease-in-out;
+    }
+
+    &.animate::before { animation: pulse 2s infinite; }
+    &.no-animate::before { display: none; }
+
+    &::before {
+      content: attr(ns-notification-count);
+      position: absolute;
+      transform: translate(0, -50%);
+      right: 0;
+      top: 0;
+      min-width: 18px;
+      min-height: 18px;
+      background: $main;
+      color: $white;
+      border-radius: 50em;
+      text-align: center;
+      font-size: $fs_smallest;
+      line-height: 16px;
+      padding: 2px 5px;
+      box-sizing: border-box;
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba($main, 0.4);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba($main, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba($main, 0);
+        }
+      }
+
+    }
+
+  }
+
+  .recent-notifications {
+    right: 68px;
+    bottom: 16px;
+    min-width: 270px;
+    transition: all 250ms;
+    margin-right: 16px;
+
+    ul {
+      overflow: auto;
+      max-height: calc(100vh - 32px - 75px);
+
+      &.stacked {
+        overflow: visible;
+        max-height: none;
+      }
+
+      li {
+        position: relative;
+        padding-left: 3px;
+        margin: 5px 0;
+        background: $white;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          background: $main;
+          height: 100%;
+          width: 3px;
+        }
+      }
+    }
+
+  }
+
+  li.generic-notification {
+
+    border-radius: 5px 0 0 5px;
+
+    &.alert-notification-warn {
+      background: $alert_warn_bg;
+      .icon, p, time {
+        color: $alert_warn_col !important;
+      }
+    }
+    &.alert-notification-danger {
+      background: $alert_error_bg;
+      .icon, p, time {
+        color: $alert_error_col !important;
+      }
+    }
+    a {
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      .profile-picture, .icon {
+        margin-right: 15px;
+      }
+      .icon {
+        text-align: center;
+        font-size: 1.5rem;
+      }
+      .notification-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        p {
+          font-size: $fs_smaller;
+          color: $text_1;
+          margin: 5px 0;
+          line-height: 1.25;
+          .name {
+            font-weight: 600;
+          }
+        }
+        time {
+          font-size: $fs_smallest;
+          color: $text_2;
+        }
+      }
+    }
+  }
+}

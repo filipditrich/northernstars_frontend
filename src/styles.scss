@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@import "assets/partials/variables";
+@import "assets/partials/icons";
+@import "assets/partials/buttons";
+@import "assets/partials/tags";
+@import "assets/partials/tooltips";
+@import "assets/partials/profile-picture";
+@import "assets/partials/lists";
+@import "assets/partials/links";
+
+@import url('https://fonts.googleapis.com/css?family=#{$font_family}:300,400,600,700,800&subset=latin-ext');
+
+body{
+  font-family: $font_family, sans-serif;
+  background-color: $body_bg;
+}
+
+main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}

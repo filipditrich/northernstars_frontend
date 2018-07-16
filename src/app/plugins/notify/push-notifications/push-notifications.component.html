@@ -1,0 +1,23 @@
+<div id="push-notifications">
+  <!--<button (click)="a()">NOTIFY_PUSH_NOTIFICATION</button>-->
+
+  <div class="recent-notifications" [@popIn]="notifications.length" [ngClass]="stacked ? 'stacked' : null">
+    <ul class="reset stacked">
+      <li *ngFor="let notification of notifications; let i = index;" class="generic-notification" [ngStyle]="" [ngClass]="notification.fadedOut ? 'faded-out' : null">
+        <a [routerLink]="[notification.href]">
+          <div class="profile-picture small round">
+            <img src="../../../../assets/profile.png" alt="__profile__">
+          </div>
+          <div class="notification-container">
+            <p [innerHTML]="notification.message"></p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <button class="reset notification-toggle" [attr.ns-notification-count]="notifications.length > 0 ? notifications.length : null" (click)="pn_open = !pn_open" [ngClass]="notifications.length > 0 ? 'animate' : 'no-animate'">
+    <i class="icon" [attr.ns-role]="'icon'" [attr.icon-type]="'ionicons'" [attr.icon-code]="'&#xf17d;'" [attr.icon-size]="'lg'"></i>
+  </button>
+
+</div>

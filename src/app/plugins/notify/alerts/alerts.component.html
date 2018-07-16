@@ -1,0 +1,9 @@
+<section id="alerts" *ngIf="alerts">
+  <div *ngFor="let alert of alerts; let i = index" class="alert {{ alertClass(alert) }}" [ngClass]="alert.redirect ? 'clickable' : null" [routerLink]="alert.redirect ? ['/'+alert.redirect] : null">
+    <p [innerHTML]="alert.payload"></p>
+    <button class="reset" (click)="removeAlert(alert)" [attr.ns-tooltip]="'Close'" [attr.ns-tooltip-position]="'bottom'"><i [attr.ns-role]="'icon'" [attr.icon-type]="'ionicons'" [attr.icon-code]="'&#xf406;'" [attr.icon-size]="'md'"></i></button>
+  </div>
+</section>
+
+
+<button (click)="a()">NOTIFY_ALERT</button>

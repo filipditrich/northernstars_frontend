@@ -1,0 +1,14 @@
+<div id="popups" [ngClass]="popUps.length !== 0 ? 'non-empty' : null" [@popIn]="popUps.length">
+
+  <!--<button (click)="a()">NOTIFY_POPUP</button>-->
+  <!--<button (click)="b()">NOTIFY_POPUP</button>-->
+
+  <div class="popup {{popUpClass(popUp)}}" *ngFor="let popUp of popUps">
+    <p class="heading">{{popUp.heading}}</p>
+    <p class="text">{{popUp.text}}</p>
+    <div class="buttons">
+      <button *ngFor="let button of popUp.buttons" class="button large {{popUpButtonClass(button)}}" (click)="popUpButtonAction(button, popUp)">{{button.text}}</button>
+    </div>
+  </div>
+
+</div>
